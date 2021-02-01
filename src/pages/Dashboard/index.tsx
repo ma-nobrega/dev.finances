@@ -1,8 +1,7 @@
-import React, { useEffect, useState } from 'react';
+import React, { FormEvent, useEffect, useState } from 'react';
 import Income from '../../assets/income.svg';
 import Expense from '../../assets/expense.svg';
 import Total from '../../assets/total.svg';
-import Minus from '../../assets/minus.svg';
 import Header from '../../components/Header';
 import Card from '../../components/Card';
 
@@ -25,6 +24,18 @@ const App: React.FC = () => {
     }
     return [];
   });
+
+  async function handleAddRepository(
+    event: FormEvent<HTMLFormElement>,
+  ): Promise<void> {
+    event.preventDefault();
+    const data = { description, value, date };
+    setTransactions([...transactions, data]);
+    setModalVisible(false);
+    setDescription('');
+    setValue('');
+    setDate('');
+  }
 
   useEffect(() => {
     localStorage.setItem(
@@ -62,11 +73,11 @@ const App: React.FC = () => {
             </thead>
             <tbody>
               {transactions.map(transaction => (
-                <tr key={description}>
-                  <th>{description}</th>
-                  <th>{value}</th>
-                  <th>{date}</th>
-                  <th />
+                <tr key={transaction.description}>
+                  <td className="description">{transaction.description}</td>
+                  <td className="expense">{transaction.value}</td>
+                  <td className="date">{transaction.date}</td>
+                  <td />
                 </tr>
               ))}
             </tbody>
@@ -78,7 +89,7 @@ const App: React.FC = () => {
           <div className="modal">
             <div id="form">
               <h2>Nova Transação</h2>
-              <form action="">
+              <form onSubmit={handleAddRepository}>
                 <div className="input-group">
                   <label className="sr-only" htmlFor="description">
                     Descrição
@@ -133,11 +144,7 @@ const App: React.FC = () => {
                   >
                     Cancelar
                   </button>
-                  <button
-                    type="submit"
-                    onClick={() => setModalVisible(false)}
-                    className="button cancel"
-                  >
+                  <button type="submit" className="button save">
                     Salvar
                   </button>
                 </div>
