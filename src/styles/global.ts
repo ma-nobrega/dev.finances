@@ -73,10 +73,9 @@ button {
   border-radius: 0.25rem;
 
   cursor: pointer;
-}
-
-button:hover {
-  background: var(--light-green);
+  &:hover {
+    background: var(--light-green);
+  }
 }
 
 .button.new {
@@ -96,10 +95,9 @@ button:hover {
   justify-content: center;
 
   opacity: 0.6;
-}
-
-.button.cancel:hover {
-  opacity: 1;
+  &:hover {
+    opacity: 1;
+  }
 }
 
 /* Header ===================== */
@@ -117,11 +115,10 @@ header {
 /* Balance ===================== */
 #balance {
   margin-top: -8rem;
-}
-
-#balance h2 {
-  color:white;
-  margin-top:0;
+  h2 {
+    color:white;
+    margin-top:0;
+  }
 }
 
 /* Cards ===================== */
@@ -133,22 +130,20 @@ header {
   margin-bottom: 2rem;
 
   color: var(--dark-blue);
-}
+  h3 {
+    font-weight: normal;
+    font-size: 1rem;
 
-.card h3 {
-  font-weight: normal;
-  font-size: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  p {
+    font-size: 2rem;
+    line-height: 3rem;
 
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
-
-.card p {
-  font-size: 2rem;
-  line-height: 3rem;
-
-  margin-top: 1rem;
+    margin-top: 1rem;
+  }
 }
 
 .card.total {
@@ -250,10 +245,9 @@ td.expense {
 /* Form ===================== */
 #form {
   max-width: 500px;
-}
-
-#form h2 {
-  margin-top: 0;
+  h2 {
+    margin-top: 0;
+  }
 }
 
 input {
@@ -267,10 +261,9 @@ input {
 
 .input-group {
   margin-top: 0.8rem;
-}
-
-.input-group small{
-  opacity: 0.4;
+  small{
+    opacity: 0.4;
+  }
 }
 
 .input-group.actions {
