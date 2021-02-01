@@ -1,43 +1,20 @@
 import React from 'react';
-import Logo from '../../assets/logo.svg';
 import Income from '../../assets/income.svg';
 import Expense from '../../assets/expense.svg';
 import Total from '../../assets/total.svg';
 import Minus from '../../assets/minus.svg';
+import Header from '../../components/Header';
+import Card from '../../components/Card';
 
 const App: React.FC = () => (
   <>
-    <header>
-      <img src={Logo} alt="Logo Dev Finance" />
-    </header>
-
+    <Header />
     <main className="container">
       <section id="balance">
         <h2 className="sr-only">Balanço</h2>
-
-        <div className="card">
-          <h3>
-            <span>Entradas</span>
-            <img src={Income} alt="entradas" />
-          </h3>
-          <p>R$ 5.000,00</p>
-        </div>
-
-        <div className="card">
-          <h3>
-            <span>Saídas</span>
-            <img src={Expense} alt="saídas" />
-          </h3>
-          <p>R$ 2.000,00</p>
-        </div>
-
-        <div className="card total">
-          <h3>
-            <span>Total</span>
-            <img src={Total} alt="total" />
-          </h3>
-          <p>R$ 3.000,00</p>
-        </div>
+        <Card type="Entradas" img={Income} value="R$ 5.000,00" />
+        <Card type="Saidas" img={Expense} value="R$ 2.000,00" />
+        <Card type="Total" img={Total} value="R$ 3.000,00" />
       </section>
 
       <section id="transaction">

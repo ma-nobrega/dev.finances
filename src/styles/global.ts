@@ -6,7 +6,6 @@ export default createGlobalStyle`
   --green: #49AA26;
   --light-green: #3dd705;
   --red: #e92929;
-
 }
 
 * {
@@ -100,18 +99,6 @@ button {
   }
 }
 
-/* Header ===================== */
-header {
-  background: #2D4A22;
-  padding: 2rem 0 10rem;
-  text-align: center;
-}
-
-#logo {
-  color: #fff;
-  font-weight: 100;
-}
-
 /* Balance ===================== */
 #balance {
   margin-top: -8rem;
@@ -119,36 +106,6 @@ header {
     color:white;
     margin-top:0;
   }
-}
-
-/* Cards ===================== */
-.card {
-  background: white;
-  padding: 1.5rem 2rem;
-  border-radius: 0.25rem;
-
-  margin-bottom: 2rem;
-
-  color: var(--dark-blue);
-  h3 {
-    font-weight: normal;
-    font-size: 1rem;
-
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-  }
-  p {
-    font-size: 2rem;
-    line-height: 3rem;
-
-    margin-top: 1rem;
-  }
-}
-
-.card.total {
-  background: var(--green);
-  color: white;
 }
 
 /* Table ===================== */
