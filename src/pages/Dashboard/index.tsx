@@ -2,6 +2,8 @@ import React, { FormEvent, useEffect, useState } from 'react';
 import Income from '../../assets/income.svg';
 import Expense from '../../assets/expense.svg';
 import Total from '../../assets/total.svg';
+import Minus from '../../assets/minus.svg';
+import Plus from '../../assets/plus.svg';
 import Header from '../../components/Header';
 import Card from '../../components/Card';
 import Footer from '../../components/Footer';
@@ -13,6 +15,9 @@ interface Transaction {
 }
 
 const App: React.FC = () => {
+  const [income, setIncome] = useState(0);
+  const [expense, setExpense] = useState(0);
+  const [total, setTotal] = useState(0);
   const [modalVisible, setModalVisible] = useState(false);
   const [description, setDescription] = useState('');
   const [value, setValue] = useState('');
@@ -45,15 +50,57 @@ const App: React.FC = () => {
     );
   }, [transactions]);
 
+  useEffect(() => {
+    const arrayExpense: number[] = [];
+    const arrayIncome: number[] = [];
+    transactions.map(transaction =>
+      Number(transaction.value) < 0
+        ? arrayExpense.push(Number(transaction.value))
+        : arrayIncome.push(Number(transaction.value)),
+    );
+    const expenseTotal = arrayExpense.reduce(
+      (expenseTotal, currentElement) => expenseTotal + currentElement,
+    );
+    const incomeTotal = arrayIncome.reduce(
+      (incomeTotal, currentElement) => incomeTotal + currentElement,
+    );
+    setExpense(expenseTotal);
+    setIncome(incomeTotal);
+  }, [transactions]);
+
+  useEffect(() => {
+    setTotal(income + expense);
+  }, [income, expense]);
+
   return (
     <>
       <Header />
       <main className="container">
         <section id="balance">
           <h2 className="sr-only">Balanço</h2>
-          <Card type="Entradas" img={Income} value="R$ 5.000,00" />
-          <Card type="Saidas" img={Expense} value="R$ 2.000,00" />
-          <Card type="Total" img={Total} value="R$ 3.000,00" />
+          <Card
+            type="Entradas"
+            img={Income}
+            value={`R$ ${income.toFixed(2)}`}
+          />
+          <Card
+            type="Saidas"
+            img={Expense}
+            value={`- R$ ${String(expense.toFixed(2)).replace(/-/, '')}`}
+          />
+          {total < 0 ? (
+            <Card
+              type="Total"
+              img={Total}
+              value={`- R$ ${String(total.toFixed(2)).replace(/-/, '')}`}
+            />
+          ) : (
+            <Card
+              type="Total"
+              img={Total}
+              value={`R$ ${String(total.toFixed(2))}`}
+            />
+          )}
         </section>
 
         <section id="transaction">
@@ -76,9 +123,23 @@ const App: React.FC = () => {
               {transactions.map(transaction => (
                 <tr key={transaction.description}>
                   <td className="description">{transaction.description}</td>
-                  <td className="expense">{transaction.value}</td>
+                  {Number(transaction.value) < 0 ? (
+                    <td className="expense">
+                      {`- R$ ${transaction.value.replace(/-/, '')}`}
+                    </td>
+                  ) : (
+                    <td className="income">{`+ R$ ${transaction.value}`}</td>
+                  )}
                   <td className="date">{transaction.date}</td>
-                  <td />
+                  {Number(transaction.value) < 0 ? (
+                    <td>
+                      <img src={Minus} alt="Remover transação" />
+                    </td>
+                  ) : (
+                    <td>
+                      <img src={Plus} alt="Remover transação" />
+                    </td>
+                  )}
                 </tr>
               ))}
             </tbody>
