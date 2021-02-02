@@ -12,9 +12,9 @@ export const Container = styled.div`
     font-weight: normal;
     font-size: 1rem;
 
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
   }
   p {
     font-size: 2rem;
@@ -22,9 +22,4 @@ export const Container = styled.div`
 
     margin-top: 1rem;
   }
-}
-
-.card.total {
-  background: var(--green);
-  color: white;
 `;

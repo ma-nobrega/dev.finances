@@ -5,14 +5,15 @@ interface CardProps {
   type: string;
   img: string;
   value: string;
+  className?: string;
 }
 
-const Header: React.FC<CardProps> = ({ type, img, value }) => {
+const Header: React.FC<CardProps> = ({ type, img, value, className }) => {
   return (
-    <Container>
+    <Container className={className}>
       <h3>
         <span>{type}</span>
-        <img src={img} alt="entradas" />
+        <img src={img} alt={type} />
       </h3>
       <p>{value}</p>
     </Container>

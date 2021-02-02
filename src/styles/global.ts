@@ -35,10 +35,6 @@ body {
   border-width: 0;
 }
 
-.container {
-  width: min(90vw, 800px);
-  margin: auto;
-}
 
 /* Titles ===================== */
 h2 {
@@ -226,17 +222,6 @@ input {
 .input-group.actions button {
   width: 48%;
 }
-
-
-/* Footer ===================== */
-footer {
-  text-align: center;
-  padding: 4rem 0 2rem;
-  color: var(--dark-blue);
-
-  opacity: 0.6;
-}
-
 
 /* Responsive ===================== */
 @media (min-width: 800px) {

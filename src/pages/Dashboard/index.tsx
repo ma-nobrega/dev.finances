@@ -1,4 +1,5 @@
 import React, { FormEvent, useEffect, useState } from 'react';
+import { Container, Content } from './styles';
 import Income from '../../assets/income.svg';
 import Expense from '../../assets/expense.svg';
 import Total from '../../assets/total.svg';
@@ -73,9 +74,9 @@ const App: React.FC = () => {
   }, [income, expense]);
 
   return (
-    <>
+    <Container>
       <Header />
-      <main className="container">
+      <Content>
         <section id="balance">
           <h2 className="sr-only">Balanço</h2>
           <Card
@@ -90,12 +91,14 @@ const App: React.FC = () => {
           />
           {total < 0 ? (
             <Card
+              className="negative"
               type="Total"
               img={Total}
               value={`- R$ ${String(total.toFixed(2)).replace(/-/, '')}`}
             />
           ) : (
             <Card
+              className="positive"
               type="Total"
               img={Total}
               value={`R$ ${String(total.toFixed(2))}`}
@@ -145,7 +148,7 @@ const App: React.FC = () => {
             </tbody>
           </table>
         </section>
-      </main>
+      </Content>
       {modalVisible ? (
         <div className="modal-overlay">
           <div className="modal">
@@ -207,7 +210,7 @@ const App: React.FC = () => {
         </div>
       ) : null}
       <Footer />
-    </>
+    </Container>
   );
 };
 
