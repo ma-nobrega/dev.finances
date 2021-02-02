@@ -4,6 +4,7 @@ import Expense from '../../assets/expense.svg';
 import Total from '../../assets/total.svg';
 import Header from '../../components/Header';
 import Card from '../../components/Card';
+import Footer from '../../components/Footer';
 
 interface Transaction {
   description: string;
@@ -91,9 +92,6 @@ const App: React.FC = () => {
               <h2>Nova Transação</h2>
               <form onSubmit={handleAddRepository}>
                 <div className="input-group">
-                  <label className="sr-only" htmlFor="description">
-                    Descrição
-                  </label>
                   <input
                     type="text"
                     id="description"
@@ -105,9 +103,6 @@ const App: React.FC = () => {
                 </div>
 
                 <div className="input-group">
-                  <label className="sr-only" htmlFor="amount">
-                    Valor
-                  </label>
                   <input
                     type="number"
                     step="0.01"
@@ -124,9 +119,6 @@ const App: React.FC = () => {
                 </div>
 
                 <div className="input-group">
-                  <label className="sr-only" htmlFor="date">
-                    Data
-                  </label>
                   <input
                     type="date"
                     id="date"
@@ -153,10 +145,7 @@ const App: React.FC = () => {
           </div>
         </div>
       ) : null}
-
-      <footer>
-        <p>dev.finance$</p>
-      </footer>
+      <Footer />
     </>
   );
 };
