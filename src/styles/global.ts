@@ -136,30 +136,7 @@ table thead th {
   text-align: left;
 }
 
-table tbody tr {
-  opacity: 0.7
-}
 
-table tbody tr:hover {
-  opacity: 1
-}
-
-table tbody td {
-  background:white;
-  padding: 1rem 2rem;
-}
-
-td.description {
-  color: var(--dark-blue);
-}
-
-td.income {
-  color: #12a454;
-}
-
-td.expense {
-  color: #e92929;
-}
 
 /* Modal ===================== */
 .modal-overlay {

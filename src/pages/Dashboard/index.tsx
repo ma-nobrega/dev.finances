@@ -3,11 +3,10 @@ import { Container, Content } from './styles';
 import Income from '../../assets/income.svg';
 import Expense from '../../assets/expense.svg';
 import Total from '../../assets/total.svg';
-import Minus from '../../assets/minus.svg';
-import Plus from '../../assets/plus.svg';
 import Header from '../../components/Header';
 import Card from '../../components/Card';
 import Footer from '../../components/Footer';
+import Transaction from '../../components/Transaction';
 
 interface Transaction {
   description: string;
@@ -60,14 +59,16 @@ const App: React.FC = () => {
         : arrayIncome.push(Number(transaction.value)),
     );
     const expenseTotal = arrayExpense.reduce(
-      (expenseTotal, currentElement) => expenseTotal + currentElement,
+      (previousValue, currentValue) => previousValue + currentValue,
+      0,
     );
     const incomeTotal = arrayIncome.reduce(
-      (incomeTotal, currentElement) => incomeTotal + currentElement,
+      (previousValue, currentValue) => previousValue + currentValue,
+      0,
     );
     setExpense(expenseTotal);
     setIncome(incomeTotal);
-  }, [transactions]);
+  }, [transactions, expense, income]);
 
   useEffect(() => {
     setTotal(income + expense);
@@ -124,26 +125,12 @@ const App: React.FC = () => {
             </thead>
             <tbody>
               {transactions.map(transaction => (
-                <tr key={transaction.description}>
-                  <td className="description">{transaction.description}</td>
-                  {Number(transaction.value) < 0 ? (
-                    <td className="expense">
-                      {`- R$ ${transaction.value.replace(/-/, '')}`}
-                    </td>
-                  ) : (
-                    <td className="income">{`+ R$ ${transaction.value}`}</td>
-                  )}
-                  <td className="date">{transaction.date}</td>
-                  {Number(transaction.value) < 0 ? (
-                    <td>
-                      <img src={Minus} alt="Remover transação" />
-                    </td>
-                  ) : (
-                    <td>
-                      <img src={Plus} alt="Remover transação" />
-                    </td>
-                  )}
-                </tr>
+                <Transaction
+                  key={transaction.description}
+                  description={transaction.description}
+                  value={transaction.value}
+                  date={transaction.date}
+                />
               ))}
             </tbody>
           </table>
