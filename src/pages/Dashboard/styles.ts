@@ -13,4 +13,27 @@ export const Content = styled.div`
     background: var(--red);
     color: white;
   }
+
+  .new {
+    display: inline-block;
+    margin-bottom: 0.8rem;
+  }
+
+  .cancel {
+    color: var(--red);
+    background-color: #ffffff;
+    border: 2px var(--red) solid;
+    border-radius: 0.25rem;
+
+    height: 50px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    opacity: 0.6;
+    &:hover {
+      opacity: 1;
+    }
+  }
 `;

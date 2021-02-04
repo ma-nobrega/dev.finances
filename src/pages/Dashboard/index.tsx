@@ -6,6 +6,7 @@ import Total from '../../assets/total.svg';
 import Header from '../../components/Header';
 import Card from '../../components/Card';
 import Footer from '../../components/Footer';
+import Button from '../../components/Button';
 import Transaction from '../../components/Transaction';
 
 interface Transaction {
@@ -110,9 +111,9 @@ const App: React.FC = () => {
         <section id="transaction">
           <h2 className="sr-only">Transações</h2>
 
-          <button type="button" onClick={() => setModalVisible(true)}>
+          <Button type="button" onClick={() => setModalVisible(true)}>
             + Nova Transação
-          </button>
+          </Button>
 
           <table id="data-table">
             <thead>
@@ -166,8 +167,7 @@ const App: React.FC = () => {
                     placeholder="0,00"
                   />
                   <small className="help">
-                    Use o sinal - (negativo) para despesas e , (vírgula) para
-                    casas decimais
+                    Use o sinal - (negativo) para despesas
                   </small>
                 </div>
 
@@ -182,16 +182,14 @@ const App: React.FC = () => {
                 </div>
 
                 <div className="input-group actions">
-                  <button
+                  <Button
                     type="button"
+                    className="cancel"
                     onClick={() => setModalVisible(false)}
-                    className="button cancel"
                   >
                     Cancelar
-                  </button>
-                  <button type="submit" className="button save">
-                    Salvar
-                  </button>
+                  </Button>
+                  <Button type="submit">Salvar</Button>
                 </div>
               </form>
             </div>

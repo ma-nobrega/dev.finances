@@ -44,7 +44,7 @@ h2 {
   font-weight: normal;
 }
 
-/* Links & Buttons ===================== */
+/* Links ===================== */
 a {
   color: var(--green);
   text-decoration: none;
@@ -52,47 +52,6 @@ a {
 
 a:hover {
   color: var(--light-green);
-}
-
-button {
-  width: 100%;
-  height: 50px;
-
-  border: none;
-
-  color: white;
-  background: var(--green);
-
-  padding: 0;
-
-  border-radius: 0.25rem;
-
-  cursor: pointer;
-  &:hover {
-    background: var(--light-green);
-  }
-}
-
-.button.new {
-  display: inline-block;
-  margin-bottom: .8rem;
-}
-
-.button.cancel {
-  color: var(--red);
-  border: 2px var(--red) solid;
-  border-radius: 0.25rem;
-
-  height: 50px;
-
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
-  opacity: 0.6;
-  &:hover {
-    opacity: 1;
-  }
 }
 
 /* Balance ===================== */
