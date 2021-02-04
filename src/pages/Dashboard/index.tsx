@@ -120,12 +120,14 @@ const App: React.FC = () => {
                 <th>Descrição</th>
                 <th>Valor</th>
                 <th>Data</th>
+                {/* eslint-disable-next-line jsx-a11y/control-has-associated-label */}
                 <th />
               </tr>
             </thead>
             <tbody>
               {transactions.map(transaction => (
                 <Transaction
+                  setTransactions={setTransactions}
                   key={transaction.description}
                   description={transaction.description}
                   value={transaction.value}
