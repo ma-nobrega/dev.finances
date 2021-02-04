@@ -34,7 +34,9 @@ const Transaction: React.FC<TransactionProps> = ({
     <Container onClick={() => removeTransaction()}>
       <td className="description">{description}</td>
       {Number(value) < 0 ? (
-        <td className="expense">{`- R$ ${value.replace(/-/, '')}`}</td>
+        <td className="expense">
+          {`- R$ ${Number(value).toFixed(2).replace(/-/, '')}`}
+        </td>
       ) : (
         <td className="income">{`+ R$ ${Number(value).toFixed(2)}`}</td>
       )}
