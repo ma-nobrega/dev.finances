@@ -1,4 +1,5 @@
 import React, { FormEvent, useEffect, useState } from 'react';
+import { FiCalendar, FiDollarSign, FiEdit2 } from 'react-icons/fi';
 import { Container, Content } from './styles';
 import Income from '../../assets/income.svg';
 import Expense from '../../assets/expense.svg';
@@ -8,6 +9,7 @@ import Card from '../../components/Card';
 import Footer from '../../components/Footer';
 import Button from '../../components/Button';
 import Transaction from '../../components/Transaction';
+import Input from '../../components/Input';
 
 interface Transaction {
   description: string;
@@ -145,41 +147,34 @@ const App: React.FC = () => {
             <div id="form">
               <h2>Nova Transação</h2>
               <form onSubmit={handleAddRepository}>
-                <div className="input-group">
-                  <input
-                    type="text"
-                    id="description"
-                    name="description"
-                    placeholder="Descrição"
-                    value={description}
-                    onChange={e => setDescription(e.target.value)}
-                  />
-                </div>
+                <Input
+                  icon={FiEdit2}
+                  type="text"
+                  id="description"
+                  name="description"
+                  placeholder="Descrição"
+                  value={description}
+                  onChange={e => setDescription(e.target.value)}
+                />
+                <Input
+                  icon={FiDollarSign}
+                  type="number"
+                  step="0.01"
+                  id="amount"
+                  name="amount"
+                  value={value}
+                  onChange={e => setValue(e.target.value)}
+                  placeholder="0,00"
+                />
 
-                <div className="input-group">
-                  <input
-                    type="number"
-                    step="0.01"
-                    id="amount"
-                    name="amount"
-                    value={value}
-                    onChange={e => setValue(e.target.value)}
-                    placeholder="0,00"
-                  />
-                  <small className="help">
-                    Use o sinal - (negativo) para despesas
-                  </small>
-                </div>
-
-                <div className="input-group">
-                  <input
-                    type="date"
-                    id="date"
-                    name="date"
-                    value={date}
-                    onChange={e => setDate(e.target.value)}
-                  />
-                </div>
+                <Input
+                  icon={FiCalendar}
+                  type="date"
+                  id="date"
+                  name="date"
+                  value={date}
+                  onChange={e => setDate(e.target.value)}
+                />
 
                 <div className="input-group actions">
                   <Button

@@ -118,6 +118,8 @@ table thead th {
 .modal {
   background: #F0F2f5;
   padding: 2.4rem;
+  border-radius:8px;
+
 
   position: relative;
   z-index: 1;
@@ -127,26 +129,12 @@ table thead th {
 /* Form ===================== */
 #form {
   max-width: 500px;
+  width:500px;
   h2 {
     margin-top: 0;
   }
 }
 
-input {
-  border: none;
-  border-radius: 0.2rem;
-
-  padding: 0.8rem;
-
-  width: 100%;
-}
-
-.input-group {
-  margin-top: 0.8rem;
-  small{
-    opacity: 0.4;
-  }
-}
 
 .input-group.actions {
   display: flex;
