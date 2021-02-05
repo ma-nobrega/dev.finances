@@ -1,9 +1,10 @@
 import React from 'react';
+import { FiMinusCircle } from 'react-icons/fi';
 import { Container } from './styles';
-import Minus from '../../assets/minus.svg';
 
 interface TransactionProps {
   description: string;
+  type: string;
   value: string;
   date: string;
   setTransactions: Function;
@@ -11,6 +12,7 @@ interface TransactionProps {
 
 const Transaction: React.FC<TransactionProps> = ({
   description,
+  type,
   value,
   date,
   setTransactions,
@@ -33,7 +35,8 @@ const Transaction: React.FC<TransactionProps> = ({
   return (
     <Container onClick={() => removeTransaction()}>
       <td className="description">{description}</td>
-      {Number(value) < 0 ? (
+      <td className="description">{type}</td>
+      {type === 'Saida' ? (
         <td className="expense">
           {`- R$ ${Number(value).toFixed(2).replace(/-/, '')}`}
         </td>
@@ -42,7 +45,7 @@ const Transaction: React.FC<TransactionProps> = ({
       )}
       <td className="date">{date}</td>
       <td>
-        <img src={Minus} alt="Remover transação" />
+        <FiMinusCircle size={20} />
       </td>
     </Container>
   );

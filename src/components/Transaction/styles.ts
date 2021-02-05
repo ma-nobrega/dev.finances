@@ -18,4 +18,7 @@ export const Container = styled.tr`
   .expense {
     color: #e92929;
   }
+  svg {
+    color: var(--red);
+  }
 `;

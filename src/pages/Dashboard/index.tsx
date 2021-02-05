@@ -1,5 +1,6 @@
 import React, { FormEvent, useEffect, useState } from 'react';
 import { FiCalendar, FiDollarSign, FiEdit2 } from 'react-icons/fi';
+import { BsList } from 'react-icons/bs';
 import { Container, Content } from './styles';
 import Income from '../../assets/income.svg';
 import Expense from '../../assets/expense.svg';
@@ -10,9 +11,11 @@ import Footer from '../../components/Footer';
 import Button from '../../components/Button';
 import Transaction from '../../components/Transaction';
 import Input from '../../components/Input';
+import Select from '../../components/Select';
 
 interface Transaction {
   description: string;
+  type: string;
   value: string;
   date: string;
 }
@@ -24,6 +27,7 @@ const App: React.FC = () => {
   const [modalVisible, setModalVisible] = useState(false);
   const [description, setDescription] = useState('');
   const [value, setValue] = useState('');
+  const [type, setType] = useState('');
   const [date, setDate] = useState('');
   const [transactions, setTransactions] = useState<Transaction[]>(() => {
     const storagedTransactions = localStorage.getItem('@Finances:transactions');
@@ -38,10 +42,11 @@ const App: React.FC = () => {
     event: FormEvent<HTMLFormElement>,
   ): Promise<void> {
     event.preventDefault();
-    const data = { description, value, date };
+    const data = { description, type, value, date };
     setTransactions([...transactions, data]);
     setModalVisible(false);
     setDescription('');
+    setType('');
     setValue('');
     setDate('');
   }
@@ -57,7 +62,7 @@ const App: React.FC = () => {
     const arrayExpense: number[] = [];
     const arrayIncome: number[] = [];
     transactions.map(transaction =>
-      Number(transaction.value) < 0
+      transaction.type === 'Entrada'
         ? arrayExpense.push(Number(transaction.value))
         : arrayIncome.push(Number(transaction.value)),
     );
@@ -121,6 +126,7 @@ const App: React.FC = () => {
             <thead>
               <tr>
                 <th>Descrição</th>
+                <th>Tipo</th>
                 <th>Valor</th>
                 <th>Data</th>
                 {/* eslint-disable-next-line jsx-a11y/control-has-associated-label */}
@@ -133,6 +139,7 @@ const App: React.FC = () => {
                   setTransactions={setTransactions}
                   key={transaction.description}
                   description={transaction.description}
+                  type={transaction.type}
                   value={transaction.value}
                   date={transaction.date}
                 />
@@ -156,6 +163,17 @@ const App: React.FC = () => {
                   value={description}
                   onChange={e => setDescription(e.target.value)}
                 />
+                <Select
+                  icon={BsList}
+                  name="type"
+                  id="type"
+                  value={type}
+                  onChange={e => setType(e.target.value)}
+                >
+                  <option value="">Tipo de transação</option>
+                  <option value="Entrada">Entrada</option>
+                  <option value="Saida">Saida</option>
+                </Select>
                 <Input
                   icon={FiDollarSign}
                   type="number"
