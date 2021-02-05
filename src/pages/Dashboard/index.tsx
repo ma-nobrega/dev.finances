@@ -2,9 +2,6 @@ import React, { FormEvent, useEffect, useState } from 'react';
 import { FiCalendar, FiDollarSign, FiEdit2 } from 'react-icons/fi';
 import { BsList } from 'react-icons/bs';
 import { Container, Content } from './styles';
-import Income from '../../assets/income.svg';
-import Expense from '../../assets/expense.svg';
-import Total from '../../assets/total.svg';
 import Header from '../../components/Header';
 import Card from '../../components/Card';
 import Footer from '../../components/Footer';
@@ -62,7 +59,7 @@ const App: React.FC = () => {
     const arrayExpense: number[] = [];
     const arrayIncome: number[] = [];
     transactions.map(transaction =>
-      transaction.type === 'Entrada'
+      transaction.type === 'Saida'
         ? arrayExpense.push(Number(transaction.value))
         : arrayIncome.push(Number(transaction.value)),
     );
@@ -79,7 +76,7 @@ const App: React.FC = () => {
   }, [transactions, expense, income]);
 
   useEffect(() => {
-    setTotal(income + expense);
+    setTotal(income - expense);
   }, [income, expense]);
 
   return (
@@ -88,28 +85,21 @@ const App: React.FC = () => {
       <Content>
         <section id="balance">
           <h2 className="sr-only">Balanço</h2>
-          <Card
-            type="Entradas"
-            img={Income}
-            value={`R$ ${income.toFixed(2)}`}
-          />
+          <Card type="Entradas" value={`R$ ${income.toFixed(2)}`} />
           <Card
             type="Saidas"
-            img={Expense}
             value={`- R$ ${String(expense.toFixed(2)).replace(/-/, '')}`}
           />
           {total < 0 ? (
             <Card
               className="negative"
               type="Total"
-              img={Total}
               value={`- R$ ${String(total.toFixed(2)).replace(/-/, '')}`}
             />
           ) : (
             <Card
               className="positive"
               type="Total"
-              img={Total}
               value={`R$ ${String(total.toFixed(2))}`}
             />
           )}

@@ -22,4 +22,10 @@ export const Container = styled.div`
 
     margin-top: 1rem;
   }
+  .income {
+    color: var(--green);
+  }
+  .expense {
+    color: var(--red);
+  }
 `;
