@@ -34,7 +34,7 @@ const Transaction: React.FC<TransactionProps> = ({
     });
   }
   return (
-    <Container onClick={() => removeTransaction()}>
+    <Container>
       <td className="description">{description}</td>
       <td className="description">{type}</td>
       {type === 'Saida' ? (
@@ -45,7 +45,8 @@ const Transaction: React.FC<TransactionProps> = ({
         <td className="income">{`+ R$ ${Number(value).toFixed(2)}`}</td>
       )}
       <td className="date">{date}</td>
-      <td>
+      {/* eslint-disable-next-line jsx-a11y/click-events-have-key-events */}
+      <td onClick={() => removeTransaction()}>
         <FiMinusCircle size={20} />
       </td>
     </Container>

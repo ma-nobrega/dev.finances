@@ -8,6 +8,13 @@ export const Container = styled.tr`
   td {
     background: white;
     padding: 1rem 2rem;
+    width: 22%;
+    &:last-child {
+      width: 8%;
+      svg {
+        cursor: pointer;
+      }
+    }
   }
   .description {
     color: var(--dark-blue);

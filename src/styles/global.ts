@@ -65,36 +65,55 @@ a:hover {
 
 /* Table ===================== */
 #transaction {
+  display: block;
   width: 100%;
 }
 #data-table {
   width: 100%;
   border-spacing: 0 0.5rem;
   color: #969cb3;
-  overflow-x: auto;
-  display: block;
+  @media(max-width: 700px) {
+    margin-top: 8px;
+    display: block;
+    overflow-x: auto;
+    thead, tbody{
+      display: flex;
+      tr{
+        display: flex;
+        th, td{
+          width:150px;
+        }
+        th:last-child,
+        td:last-child{
+          width:50px;
+          padding:0;
+          margin:0;
+          display:flex;
+          align-items: center;
+          justify-content: center;
+        }
+      }
+    }
+  }
+  thead th {
+    background: white;
+    font-weight: normal;
+    padding: 1rem 2rem;
+    text-align: left;
+    width: 20%;
+    &:last-child{
+      width:8%;
+    }
+  }
+  thead tr th:first-child,
+  tbody tr td:first-child{
+    border-radius: 0.25rem 0 0 0.25rem;
+  }
+  thead tr th:last-child,
+  tbody tr td:last-child{
+    border-radius: 0 0.25rem 0.25rem 0;
+  }
 }
-
-table thead tr th:first-child,
-table tbody tr td:first-child
-{
-  border-radius: 0.25rem 0 0 0.25rem;
-}
-
-table thead tr th:last-child,
-table tbody tr td:last-child{
-  border-radius: 0 0.25rem 0.25rem 0;
-}
-
-table thead th {
-  background: white;
-
-  font-weight: normal;
-  padding: 1rem 2rem;
-
-  text-align: left;
-}
-
 
 
 /* Modal ===================== */
