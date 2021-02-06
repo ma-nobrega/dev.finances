@@ -65,14 +65,14 @@ a:hover {
 
 /* Table ===================== */
 #transaction {
-  display: block;
   width: 100%;
-  overflow-x: auto;
 }
 #data-table {
   width: 100%;
   border-spacing: 0 0.5rem;
   color: #969cb3;
+  overflow-x: auto;
+  display: block;
 }
 
 table thead tr th:first-child,
@@ -130,9 +130,13 @@ table thead th {
 #form {
   max-width: 500px;
   width:500px;
+  @media(max-width: 500px) {
+    width:90%;
+  }
   h2 {
     margin-top: 0;
   }
+
 }
 
 

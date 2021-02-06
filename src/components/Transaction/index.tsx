@@ -20,6 +20,7 @@ const Transaction: React.FC<TransactionProps> = ({
   function removeTransaction(): void {
     const local = localStorage.getItem('@Finances:transactions') || '';
     const localJson = JSON.parse(local);
+    // eslint-disable-next-line array-callback-return
     localJson.map((obj: Record<string, any>, index: number) => {
       const isDescription = obj.description === description;
       if (isDescription) {
